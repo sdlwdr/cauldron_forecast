@@ -11,6 +11,9 @@
         <h2>Next Empty Day</h2>
         <p id="next_empty"></p>
 
+        <h2>Next Void Liquid Day</h2>
+        <p id="next_void"></p>
+
         <script>
         let cauldron_data = '[' +
         '["01","01","1"],' +
@@ -385,6 +388,7 @@
         const d = new Date();
         let month = (d.getMonth() + 1).toString().padStart(2, '0');
         let day = d.getDate().toString().padStart(2, '0');
+
         for (var i=0; i < cauldron_json.length; i++) {
             if ((cauldron_json[i][0] == month) && (cauldron_json[i][1] == day)) {
                 break;
@@ -395,7 +399,7 @@
         if (today == 0) {
             document.getElementById("today").innerHTML = "Void Liquid<br><img src='vl.png'>";
         } else {
-            document.getElementById("today").innerHTML = "Air<br><img src='air.png'>";
+            document.getElementById("today").innerHTML = "Empty<br><img src='air.png'>";
         }
 
         let tomorrow_i = i+1;
@@ -406,7 +410,7 @@
         if (tomorrow == 0) {
             document.getElementById("tomorrow").innerHTML = "Void Liquid<br><img src='vl.png'>";
         } else {
-            document.getElementById("tomorrow").innerHTML = "Air<br><img src='air.png'>";
+            document.getElementById("tomorrow").innerHTML = "Empty<br><img src='air.png'>";
         }
 
         if (today == 1) {
@@ -427,6 +431,31 @@
                 for (var j=0; j<i; j++) {
                     if (cauldron_json[j][2] == 1) {
                         document.getElementById("next_empty").innerHTML =  cauldron_json[j][0] + "/" + cauldron_json[j][1];
+                        this_year = true;
+                        break;
+                    }    
+                }
+            }
+        }
+
+        if (today == 0) {
+            document.getElementById("next_void").innerHTML = "Today";
+        } 
+        else if (tomorrow == 0) {
+            document.getElementById("next_void").innerHTML = "Tomorrow";
+        }else {
+            let this_year = false;
+            for (var j=i+2; j<cauldron_json.length; j++) {
+                if (cauldron_json[j][2] == 0) {
+                    document.getElementById("next_void").innerHTML =  cauldron_json[j][0] + "/" + cauldron_json[j][1];
+                    this_year = true;
+                    break;
+                }    
+            }
+            if (this_year == false) {
+                for (var j=0; j<i; j++) {
+                    if (cauldron_json[j][2] == 0) {
+                        document.getElementById("next_void").innerHTML =  cauldron_json[j][0] + "/" + cauldron_json[j][1];
                         this_year = true;
                         break;
                     }    
