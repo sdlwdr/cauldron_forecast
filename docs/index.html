@@ -4,11 +4,9 @@
         
         <h2>Today</h2>
         <p id="today"></p>
-        <img id=today_img, src=air.png></img>
 
         <h2>Tomorrow</h2>
         <p id="tomorrow"></p>
-        <img id=tomorrow_img, src=air.png></img>
 
         <script>
         let cauldron_data = '[' +
@@ -393,7 +391,6 @@
         let today = cauldron_json[i][2];
         if (today == 0) {
             document.getElementById("today").innerHTML = "Void Liquid";
-            document.getElementById("today_img").src ="vl.png";
         } else {
             document.getElementById("today").innerHTML = "Air";
         }
@@ -405,7 +402,6 @@
         let tomorrow = cauldron_json[tomorrow_i][2];
         if (tomorrow == 0) {
             document.getElementById("tomorrow").innerHTML = "Void Liquid";
-            document.getElementById("tomorrow_img").src ="vl.png";
         } else {
             document.getElementById("tomorrow").innerHTML = "Air";
         }
