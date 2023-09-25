@@ -393,10 +393,11 @@
             document.getElementById("today").innerHTML = "Air";
         }
 
-        let tomorrow = i+1;
-        if (tomorrow >= cauldron_json.length) {
-            tomorrow = 0;
+        let tomorrow_i = i+1;
+        if (tomorrow_i >= cauldron_json.length) {
+            tomorrow_i = 0;
         }
+        let tomorrow = cauldron_json[tomorrow_i][2];
         if (tomorrow == 0) {
             document.getElementById("tomorrow").innerHTML = "Void Liquid";
         } else {
