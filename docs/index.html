@@ -412,9 +412,9 @@
         if (today == 1) {
             document.getElementById("next_empty").innerHTML = "Today";
         } 
-        if (tomorrow == 1) {
+        else if (tomorrow == 1) {
             document.getElementById("next_empty").innerHTML = "Tomorrow";
-        }else {
+        } else {
             let this_year = false;
             for (var j=i+2; j<cauldron_json.length; j++) {
                 if (cauldron_json[j][2] == 1) {
