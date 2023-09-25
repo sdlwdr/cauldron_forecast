@@ -8,6 +8,9 @@
         <h2>Tomorrow</h2>
         <p id="tomorrow"></p>
 
+        <h2>Next Empty Day</h2>
+        <p id="next_empty"></p>
+
         <script>
         let cauldron_data = '[' +
         '["01","01","1"],' +
@@ -390,9 +393,9 @@
 
         let today = cauldron_json[i][2];
         if (today == 0) {
-            document.getElementById("today").innerHTML = "Void Liquid";
+            document.getElementById("today").innerHTML = "Void Liquid<br><img src='vl.png'>";
         } else {
-            document.getElementById("today").innerHTML = "Air";
+            document.getElementById("today").innerHTML = "Air<br><img src='air.png'>";
         }
 
         let tomorrow_i = i+1;
@@ -401,10 +404,36 @@
         }
         let tomorrow = cauldron_json[tomorrow_i][2];
         if (tomorrow == 0) {
-            document.getElementById("tomorrow").innerHTML = "Void Liquid";
+            document.getElementById("tomorrow").innerHTML = "Void Liquid<br><img src='vl.png'>";
         } else {
-            document.getElementById("tomorrow").innerHTML = "Air";
+            document.getElementById("tomorrow").innerHTML = "Air<br><img src='air.png'>";
         }
+
+        if (today == 1) {
+            document.getElementById("next_empty").innerHTML = "Today";
+        } 
+        if (tomorrow == 1) {
+            document.getElementById("next_empty").innerHTML = "Tomorrow";
+        }else {
+            let this_year = false;
+            for (var j=i+2; j<cauldron_json.length; j++) {
+                if (cauldron_json[j][2] == 1) {
+                    document.getElementById("next_empty").innerHTML =  cauldron_json[j][0] + "/" + cauldron_json[j][1];
+                    this_year = true;
+                    break;
+                }    
+            }
+            if (this_year == false) {
+                for (var j=0; j<i; j++) {
+                    if (cauldron_json[j][2] == 1) {
+                        document.getElementById("next_empty").innerHTML =  cauldron_json[j][0] + "/" + cauldron_json[j][1];
+                        this_year = true;
+                        break;
+                    }    
+                }
+            }
+        }
+
         </script>
     </body>
 </html>
