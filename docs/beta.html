@@ -410,7 +410,7 @@
             var e_forecast = document.getElementById("forecast")
             
             for (var n=0; n < max_days; n++) {
-                if (month == '02' && day == '29') {
+                if (n == 0 && month == '02' && day == '29') {
                     var date_str = "<td><h2>02/29</h2>";
                     var html_str = "<td>?<br><h3>Unknown</h3><br>50%</td>";
                 } else {
