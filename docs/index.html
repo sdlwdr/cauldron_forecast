@@ -19,6 +19,12 @@
     </head>
     <body>
         <h1>Noita Cauldron Forecast</h1>
+        <br>
+        <p style="color:white;background-color:red;">
+            WARNING: Leap years and beta updates are causing some uncertainty in the forecast.<br>
+            Contents may vary based on time zone, game version, or other factors.
+        </p>
+        <br>
         <table>
             <tr id="date"></tr>
             <tr id="forecast"></tr>
@@ -422,16 +428,10 @@
                 } else {
                     html_str += "<img src='air.png'><br><h3>Empty</h3>";
                 }
-                html_str += "<br>50%</td>"
+                html_str += "<br>51%</td>"
                 
                 e_forecast.innerHTML += html_str;
             }
         </script>
-        <br>
-        <br>
-        <p style="color:white;background-color:red;">
-            WARNING: Leap years and beta updates are causing some uncertainty in the forecast.<br>
-            Contents may vary, based on time zone or other factors.
-        </p>
     </body>
 </html>
