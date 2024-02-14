@@ -21,8 +21,9 @@
         <h1>Noita Cauldron Forecast</h1>
         <br>
         <p style="color:white;background-color:red;">
-            WARNING: Leap years and beta updates are causing some uncertainty in the forecast.<br>
-            Contents may vary based on time zone, game version, or other factors.
+            WARNING: The leap year and beta updates have caused some uncertainty in the forecast.<br>
+            Contents will be unpredictable in December 2024, but this page should remain accurate until then.<br>
+            Note that the cauldron's contents are determined when you first load its area each game (and again each NG+ cycle), based on UTC time.
         </p>
         <br>
         <table>
@@ -91,6 +92,7 @@
             '["02","26","0"],' +
             '["02","27","1"],' +
             '["02","28","0"],' +
+            '["02","29","0"],' +
             '["03","01","0"],' +
             '["03","02","0"],' +
             '["03","03","1"],' +
@@ -414,11 +416,16 @@
 
             var e_date = document.getElementById("date")
             var e_forecast = document.getElementById("forecast")
-            
+
+            var LEAP_YEAR = true;
             for (var n=0; n < max_days; n++) {
                 let i = (d + n) % cauldron_json.length;
                 let month_i = cauldron_json[i][0];
                 let day_i = cauldron_json[i][1];
+                if ((month_i == "02") && (day_i == "29") &&(LEAP_YEAR == false)) {
+                    max_days++;
+                    continue;
+                }
                 let contents_i = cauldron_json[i][2];
                 date_str = "<td><h2>" + month_i + "/" + day_i + "</h2>"
                 e_date.innerHTML += date_str;
