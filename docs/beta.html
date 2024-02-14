@@ -19,6 +19,12 @@
     </head>
     <body>
         <h1>Noita Cauldron Forecast</h1>
+        <br>
+        <p style="color:white;background-color:red;">
+            WARNING: Leap years and beta updates are causing some uncertainty in the forecast.<br>
+            Contents may vary based on time zone, game version, or other factors.
+        </p>
+        <br>
         <table>
             <tr id="date"></tr>
             <tr id="forecast"></tr>
@@ -408,26 +414,27 @@
 
             var e_date = document.getElementById("date")
             var e_forecast = document.getElementById("forecast")
-            
+
+            var LEAP_YEAR = true;
             for (var n=0; n < max_days; n++) {
-                if (n == 0 && month == '02' && day == '29') {
-                    var date_str = "<td><h2>02/29</h2>";
-                    var html_str = "<td>?<br><h3>Unknown</h3><br>50%</td>";
-                } else {
-                    let i = (d + n) % cauldron_json.length;
-                    let month_i = cauldron_json[i][0];
-                    let day_i = cauldron_json[i][1];
-                    let contents_i = cauldron_json[i][2];
-                    var date_str = "<td><h2>" + month_i + "/" + day_i + "</h2>"
-                    var html_str = "<td>";
-                    if (contents_i == 0) {
-                        html_str += "<img src='vl.png'><br><h3>Void Liquid</h3>";
-                    } else {
-                        html_str += "<img src='air.png'><br><h3>Empty</h3>";
-                    }
-                    html_str += "<br>100%</td>"
+                let i = (d + n) % cauldron_json.length;
+                let month_i = cauldron_json[i][0];
+                let day_i = cauldron_json[i][1];
+                if ((month_i == "02") && (day_i == "29") &&(!LEAP_YEAR)) {
+                    max_days++;
+                    continue;
                 }
+                let contents_i = cauldron_json[i][2];
+                date_str = "<td><h2>" + month_i + "/" + day_i + "</h2>"
                 e_date.innerHTML += date_str;
+                var html_str = "<td>";
+                if (contents_i == 0) {
+                    html_str += "<img src='vl.png'><br><h3>Void Liquid</h3>";
+                } else {
+                    html_str += "<img src='air.png'><br><h3>Empty</h3>";
+                }
+                html_str += "<br>51%</td>"
+                
                 e_forecast.innerHTML += html_str;
             }
         </script>
