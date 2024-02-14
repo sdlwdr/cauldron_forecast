@@ -405,6 +405,8 @@
             const dd = new Date();
             let month = (dd.getMonth() + 1).toString().padStart(2, '0');
             let day = dd.getDate().toString().padStart(2, '0');
+            let year = dd.getFullYear();
+            var LEAP_YEAR = ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
 
             var max_days = 7;
             for (var d=0; d < cauldron_json.length; d++) {
@@ -415,8 +417,7 @@
 
             var e_date = document.getElementById("date")
             var e_forecast = document.getElementById("forecast")
-
-            var LEAP_YEAR = true;
+            
             for (var n=0; n < max_days; n++) {
                 let i = (d + n) % cauldron_json.length;
                 let month_i = cauldron_json[i][0];
