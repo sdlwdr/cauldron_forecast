@@ -45,7 +45,9 @@ fetcher(file_to_fetch).then((cauldron_json) => {
     date_str = "<td><h2>" + month_i + "/" + day_i + "</h2>";
     e_date.innerHTML += date_str;
     var html_str = "<td>";
-    if (contents_i == 0) {
+    if (LEAP_YEAR == true && month_i == "12") {
+      html_str += "<img src='random.png'><br><h3>Random</h3>";
+    } else if (contents_i == 0) {
       html_str += "<img src='vl.png'><br><h3>Void Liquid</h3>";
     } else {
       html_str += "<img src='air.png'><br><h3>Empty</h3>";
