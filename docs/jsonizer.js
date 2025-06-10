@@ -52,7 +52,7 @@ fetcher(file_to_fetch).then((cauldron_json) => {
     } else {
       html_str += "<img src='air.png'><br><h3>Empty</h3>";
     }
-    html_str += "<br>99%</td>";
+    html_str += "<br>100%</td>";
 
     e_forecast.innerHTML += html_str;
   }
